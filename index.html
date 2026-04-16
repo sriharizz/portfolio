@@ -1719,30 +1719,37 @@
         line-height: 0.85;
         z-index: 2;
       }
-      /* Terminal — anchored to RIGHT, bridging AI and ENGINEER */
+      /* Terminal — smaller, centered between AI and ENGINEER */
       .term-wrapper { position: static; transform: none; }
       .h-center, body.mode-ai .h-center, body.mode-data .h-center {
         position: absolute;
-        top: 27%;
-        right: 3%;
-        left: auto;
-        transform: none !important;
+        top: 25%;           /* starts inside the AI row */
+        left: 50%;
+        transform: translateX(-40%) !important;  /* offset right of center */
         margin: 0;
-        width: 63%;
+        width: 52%;         /* compact, not full-width */
         z-index: 10;
       }
       .term-card {
         width: 100%;
-        padding: 4px;
-        border-radius: 12px;
-        box-shadow: 0 16px 48px rgba(0,0,0,0.9);
+        padding: 3px;
+        border-radius: 10px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.92);
       }
-      .term-bar { padding: 8px 12px; }
-      .term-bar .t-ti { font-size: 10px; }
-      .term-body { padding: 10px 12px; min-height: auto; }
-      .term-body .tl { font-size: 11px; line-height: 1.6; }
-      /* HIDE hi-btn — too large on mobile, blocks content */
-      .h-hi-btn { display: none !important; }
+      .term-bar { padding: 6px 10px; }
+      .term-bar .t-dot { width: 8px; height: 8px; }
+      .term-bar .t-ti { font-size: 9px; }
+      .term-body { padding: 8px 10px; min-height: auto; }
+      .term-body .tl { font-size: 10px; line-height: 1.55; }
+      /* Hi bubble — small, at bottom-left of terminal */
+      .h-hi-btn {
+        display: flex !important;
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 18px !important;
+        bottom: -16px;
+        left: -16px;
+      }
       /* "ENGINEER" — big, below terminal */
       .h-right {
         position: absolute;
@@ -1796,9 +1803,10 @@
     @media (max-width: 480px) {
       .h-name { top: 11%; font-size: 12px; }
       .h-left { top: 17%; font-size: clamp(70px, 22vw, 110px) !important; }
-      .h-center, body.mode-ai .h-center, body.mode-data .h-center { top: 24%; width: 65%; }
+      .h-center, body.mode-ai .h-center, body.mode-data .h-center { top: 23%; width: 58%; transform: translateX(-38%) !important; }
       .h-right { top: 50%; font-size: clamp(70px, 22vw, 110px) !important; }
       .h-br { top: 73%; }
+      .h-hi-btn { width: 38px !important; height: 38px !important; font-size: 15px !important; bottom: -14px; left: -14px; }
       nav { top: 10px; width: 96%; padding: 6px 10px; }
       .nav-links li a { font-size: 12px; padding: 4px 7px; }
     }
