@@ -1696,6 +1696,13 @@
       .nav-links li { display: inline-flex; }
       .nav-links li a { font-size: 13px; padding: 6px 10px; }
       .nav-av { width: 36px; height: 36px; font-size: 12px; line-height: 36px; border-radius: 10px; }
+      .nav-status { 
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 65vw;
+        font-size: 11px !important;
+      }
       .nav-cta { padding: 8px 16px; font-size: 12px; display: none; /* Hide CTA on smaller screens to save space */ }
 
       /* Hero Section */
@@ -1735,7 +1742,7 @@
         position: relative;
         top: 0; left: 0; 
         transform: none !important; 
-        margin-top: -45px; /* Pulls it up to overlap the text */
+        margin-top: -65px; /* Pulls it up to overlap the text strongly */
         margin-left: 10%; /* Skews it to the right slightly */
         align-self: flex-end; 
         width: 90%;
