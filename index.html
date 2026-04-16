@@ -1682,6 +1682,31 @@
     .cb-copy, .cb-location { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #000; letter-spacing: .04em; }
     .cb-location { display: flex; align-items: center; gap: 6px; }
     .cb-location svg { width: 11px; height: 11px; stroke: #000; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    /* Responsive tweaks for tablet and mobile */
+    @media (max-width: 900px) {
+      nav { top: 18px; left: 12px; right: 12px; transform: translateX(0); padding: 6px 12px; border-radius: 14px; }
+      .nav-links { gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .nav-links li { display: inline-flex; }
+      .nav-links li a { font-size: 13px; padding: 6px 10px; }
+      .nav-av { width: 36px; height: 36px; font-size: 12px; line-height: 36px; border-radius: 10px; }
+      .h-name { font-size: 22px; }
+      .h-left, .h-right { display: block; width: 100%; text-align: center; font-size: 48px; letter-spacing: 0.02em; }
+      .h-center { margin-top: 12px; }
+      .term-card { width: 92%; max-width: 480px; padding: 10px; border-radius: 14px; }
+      .term-bar .t-ti { font-size: 12px; }
+      .term-body .tl { font-size: 13px; line-height: 1.4; }
+      .h-hi-btn { display: none; }
+      .h-br { padding: 12px 5%; margin-top: 12px; }
+      .h-br-tags { gap: 8px; flex-wrap: wrap; }
+      .h-br-tag { padding: 6px 8px; font-size: 12px; }
+    }
+    @media (max-width: 420px) {
+      .h-left, .h-right { font-size: 36px; }
+      .term-card { max-width: calc(100% - 28px); }
+      .nav .nav-links li a { font-size: 12px; padding: 6px 8px; }
+      .h-name { font-size: 18px; }
+      .contact-bar { padding: 24px 6%; }
+    }
   </style>
 </head>
 
