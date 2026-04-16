@@ -1608,8 +1608,6 @@
       font-family: 'JetBrains Mono', monospace
     }
 
-    /* Dock removed: replaced by nav morph & hero toggle */
-
     /* SCROLL REVEAL */
     .rv {
       opacity: 0;
@@ -1620,25 +1618,8 @@
     .rv.d1 { transition-delay: .1s }
     .rv.d2 { transition-delay: .2s }
 
-    @media(max-width:900px) {
-      #specialize, #about, #contact { grid-template-columns: 1fr; gap: 50px }
-      .spec-r, .about-card { display: none }
-      
-      .h-left { right: calc(50% + 90px); font-size: clamp(48px, 12vw, 80px); }
-      .h-right { left: calc(50% + 90px); font-size: clamp(48px, 12vw, 80px); }
-      
-      .term-wrapper { transform: translate(0, 0); }
-      @keyframes scale-up {
-        from { opacity: 0; transform: translateY(-10px) scale(.93); }
-        to { opacity: 1; transform: translateY(0) scale(1); }
-      }
-
-      footer { flex-direction: column; gap: 12px; text-align: center }
-      nav .nav-links { display: none }
-    }
     /* CONTACT SECTION */
     #contact { padding: 120px 7% 80px; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    @media (max-width: 860px) { #contact { grid-template-columns: 1fr; gap: 52px; padding: 80px 6% 60px; } }
     .avail-badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 1px solid rgba(203,255,94,0.22); border-radius: 100px; background: rgba(203,255,94,0.05); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent); margin-bottom: 26px; width: fit-content; }
     .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(203,255,94,0.8); animation: pulse 1.8s ease-in-out infinite; flex-shrink: 0; }
     @keyframes pulse { 0%,100% { transform:scale(.9); opacity:.85; } 50% { transform:scale(1.35); opacity:1; } }
@@ -1655,7 +1636,7 @@
     .c-input, .c-select, .c-textarea { width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; color: var(--text); font-size: 15px; padding: 14px 16px; outline: none; transition: border-color .25s, background .25s, box-shadow .25s; }
     .c-input::placeholder, .c-textarea::placeholder { color: rgba(255,255,255,0.45); }
     .c-input:focus, .c-select:focus, .c-textarea:focus { border-color: rgba(203,255,94,0.5); background: rgba(255,255,255,0.02); box-shadow: 0 0 0 4px rgba(203,255,94,0.05); }
-    .c-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='[http://www.w3.org/2000/svg]' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.25)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; }
+    .c-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.25)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; }
     .c-select option { background: #1a1a1a; }
     .c-textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
     .form-divider { height: 1px; background: rgba(255,255,255,0.05); }
@@ -1682,30 +1663,116 @@
     .cb-copy, .cb-location { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #000; letter-spacing: .04em; }
     .cb-location { display: flex; align-items: center; gap: 6px; }
     .cb-location svg { width: 11px; height: 11px; stroke: #000; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    /* Responsive tweaks for tablet and mobile */
+
+    /* ========================================================= */
+    /* RESPONSIVE DESIGN TWEAKS                                  */
+    /* ========================================================= */
     @media (max-width: 900px) {
-      nav { top: 18px; left: 12px; right: 12px; transform: translateX(0); padding: 6px 12px; border-radius: 14px; }
-      .nav-links { gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      /* Grid Layouts to 1 column */
+      #specialize, #about, #contact { 
+        grid-template-columns: 1fr !important; 
+        gap: 50px; 
+        padding: 80px 5%; 
+      }
+      .spec-r, .about-card { display: block; margin-top: 20px; }
+      
+      /* Navigation Bar */
+      nav { 
+        top: 18px; 
+        left: 12px; right: 12px; 
+        transform: translateX(0); 
+        padding: 8px 16px; 
+        border-radius: 20px; 
+        justify-content: space-between;
+      }
+      .nav-links { 
+        gap: 12px; 
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch; 
+        padding-right: 20px;
+        flex-wrap: nowrap;
+      }
       .nav-links li { display: inline-flex; }
       .nav-links li a { font-size: 13px; padding: 6px 10px; }
       .nav-av { width: 36px; height: 36px; font-size: 12px; line-height: 36px; border-radius: 10px; }
-      .h-name { font-size: 22px; }
-      .h-left, .h-right { display: block; width: 100%; text-align: center; font-size: 48px; letter-spacing: 0.02em; }
-      .h-center { margin-top: 12px; }
-      .term-card { width: 92%; max-width: 480px; padding: 10px; border-radius: 14px; }
-      .term-bar .t-ti { font-size: 12px; }
-      .term-body .tl { font-size: 13px; line-height: 1.4; }
+      .nav-cta { padding: 8px 16px; font-size: 12px; display: none; /* Hide CTA on smaller screens to save space */ }
+
+      /* Hero Section */
+      #hero {
+        min-height: 800px;
+      }
+      .h-name { 
+        top: 15%; 
+        left: 5%; 
+        font-size: 18px; 
+      }
+      .h-left { 
+        top: 25%; 
+        left: 5%; 
+        right: auto;
+        font-size: clamp(60px, 18vw, 120px) !important; 
+        transform: none; 
+      }
+      .h-right { 
+        top: 34%; 
+        left: 10%; 
+        right: auto;
+        font-size: clamp(60px, 18vw, 120px) !important; 
+        transform: none; 
+      }
+      .term-wrapper { transform: translate(0,0); }
+      .h-center, body.mode-ai .h-center, body.mode-data .h-center { 
+        top: 55%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        margin-top: 0;
+      }
+      .term-card { 
+        width: 90vw; 
+        max-width: 480px; 
+        padding: 5px; 
+        border-radius: 14px; 
+      }
+      .term-bar .t-ti { font-size: 11px; }
+      .term-body { padding: 16px; }
+      .term-body .tl { font-size: 12px; line-height: 1.5; }
       .h-hi-btn { display: none; }
-      .h-br { padding: 12px 5%; margin-top: 12px; }
-      .h-br-tags { gap: 8px; flex-wrap: wrap; }
-      .h-br-tag { padding: 6px 8px; font-size: 12px; }
+      
+      /* Bottom Right Block in Hero */
+      .h-br { 
+        top: 82%; 
+        left: 5%; 
+        right: 5%;
+        position: absolute;
+        transform: none;
+        max-width: 100%;
+        text-align: left;
+      }
+      .h-br-main { font-size: 15px; }
+      .h-br-tags { justify-content: flex-start; gap: 8px; }
+      .h-br-tag { padding: 6px 12px; font-size: 11px; }
+      .h-toggle { bottom: 20px; }
+
+      /* Footer */
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      
+      /* Component Tweaks */
+      .con-head { font-size: clamp(50px, 10vw, 80px); }
+      .about-heading { font-size: clamp(40px, 10vw, 80px); }
+      .s-head { font-size: clamp(40px, 10vw, 80px); }
+      .contact-bar { padding: 32px 5%; }
+      .cb-top { grid-template-columns: 1fr; gap: 20px; }
     }
-    @media (max-width: 420px) {
-      .h-left, .h-right { font-size: 36px; }
-      .term-card { max-width: calc(100% - 28px); }
-      .nav .nav-links li a { font-size: 12px; padding: 6px 8px; }
-      .h-name { font-size: 18px; }
-      .contact-bar { padding: 24px 6%; }
+
+    @media (max-width: 480px) {
+      .h-left { top: 22%; font-size: clamp(50px, 18vw, 80px) !important; }
+      .h-right { top: 30%; font-size: clamp(50px, 18vw, 80px) !important; }
+      .h-center, body.mode-ai .h-center, body.mode-data .h-center { top: 52%; left: 50%; transform: translate(-50%, -50%); margin-top: 0; }
+      .h-br { top: 75%; }
+      .h-br-tags { display: flex; flex-wrap: wrap; }
+      .term-card { width: 95vw; }
+      nav { top: 12px; left: 8px; right: 8px; padding: 6px 10px; }
+      .nav-links li a { font-size: 12px; padding: 4px 6px; }
     }
   </style>
 </head>
