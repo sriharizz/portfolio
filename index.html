@@ -1667,6 +1667,72 @@
     /* ========================================================= */
     /* RESPONSIVE DESIGN TWEAKS                                  */
     /* ========================================================= */
+    /* ========================================================= */
+    /* MOBILE RESPONSIVE — 860px breakpoint                      */
+    /* ========================================================= */
+    @media (max-width: 860px) {
+      /* ── 1. GLOBAL: Prevent horizontal scroll, tighten padding ── */
+      body { overflow-x: hidden; }
+
+      #specialize, #about {
+        grid-template-columns: 1fr !important;
+        gap: 48px;
+        padding: 80px 5%;
+      }
+
+      /* ── 2. TOOLKIT BENTO GRID: Stack to 1 column ── */
+      #aiStk {
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+      }
+      .bento-card.full-width {
+        grid-column: 1 !important;
+      }
+      .lang-inner {
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+      }
+
+      /* Bento section padding */
+      #stack { padding: 80px 5%; }
+
+      /* ── 3. CONTACT SECTION: Stack to 1 column, reduce padding ── */
+      #contact {
+        grid-template-columns: 1fr !important;
+        gap: 48px;
+        padding: 60px 5% !important;
+        align-items: start;
+      }
+      .con-head {
+        font-size: clamp(44px, 10vw, 80px);
+        line-height: 0.9;
+        margin-bottom: 24px;
+      }
+      .con-tagline { max-width: 100%; }
+      .field-row {
+        grid-template-columns: 1fr !important;
+        gap: 14px;
+      }
+
+      /* ── 4. FOOTER / ACCENT BAR ── */
+      .contact-bar { padding: 32px 5%; overflow: hidden; }
+      .cb-top {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+      }
+      .cb-bottom {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .cb-copy, .cb-location { font-size: 10px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    /* ========================================================= */
+    /* RESPONSIVE DESIGN TWEAKS — legacy 900px block             */
+    /* ========================================================= */
     @media (max-width: 900px) {
       /* Grid Layouts to 1 column */
       #specialize, #about, #contact { 
@@ -1674,6 +1740,7 @@
         gap: 50px; 
         padding: 80px 5%; 
       }
+      #contact { padding: 60px 5% !important; }
       .spec-r, .about-card { display: block; margin-top: 20px; }
       
       /* Nav — centered pill, clean */
@@ -1694,95 +1761,133 @@
       .nav-status { display: none !important; }
       .nav-cta { display: none; }
 
-      /* ── HERO ── */
+      /* ── HERO MOBILE — CLEAN PROFESSIONAL STACK ── */
       #hero {
-        height: 100vh;
-        min-height: 580px;
-        overflow: hidden;
-        position: relative;
-        display: block;
-        padding: 0;
+        height: auto;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 100px 6% 60px; /* top clears the fixed nav */
+        text-align: center;
+        overflow-x: hidden;
       }
-      /* BANDA SRI HARI */
+
+      /* Name badge — top, centered */
       .h-name {
-        position: absolute;
-        top: 13%; left: 5%;
-        font-size: 14px;
-        letter-spacing: 3px;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        font-size: 10px;
+        letter-spacing: 4px;
+        opacity: 0.55;
+        margin-bottom: 28px;
+        width: 100%;
+        text-align: center;
+        white-space: nowrap;
       }
-      /* "AI" — big, top-left */
+
+      /* "AI" — can be big, only 2 chars */
       .h-left {
-        position: absolute;
-        top: 19%; left: 3%;
-        font-size: clamp(80px, 24vw, 130px) !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
         transform: none !important;
-        line-height: 0.85;
-        z-index: 2;
+        width: 100%;
+        line-height: 0.8;
+        z-index: 1;
+        text-align: center;
+        font-size: clamp(100px, 28vw, 180px) !important;
+        margin-bottom: 8px;
+        white-space: nowrap;
       }
-      /* Terminal — smaller, centered between AI and ENGINEER */
-      .term-wrapper { position: static; transform: none; }
+
+      /* Terminal — centered block */
       .h-center, body.mode-ai .h-center, body.mode-data .h-center {
-        position: absolute;
-        top: 25%;           /* starts inside the AI row */
-        left: 50%;
-        transform: translateX(-40%) !important;  /* offset right of center */
-        margin: 0;
-        width: 52%;         /* compact, not full-width */
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 88% !important;
+        max-width: 320px;
+        margin: 0 auto 8px !important;
         z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
+
       .term-card {
         width: 100%;
-        padding: 3px;
-        border-radius: 10px;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.92);
+        border-radius: 14px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.85);
       }
-      .term-bar { padding: 6px 10px; }
-      .term-bar .t-dot { width: 8px; height: 8px; }
-      .term-bar .t-ti { font-size: 9px; }
-      .term-body { padding: 8px 10px; min-height: auto; }
-      .term-body .tl { font-size: 10px; line-height: 1.55; }
-      /* Hi bubble — small, at bottom-left of terminal */
+      .term-bar { padding: 10px 14px; }
+      .term-body { padding: 14px 16px; font-size: 11.5px; line-height: 1.9; }
+
+      /* Hi Bubble — anchored to bottom-left of terminal card */
       .h-hi-btn {
-        display: flex !important;
-        width: 44px !important;
-        height: 44px !important;
-        font-size: 18px !important;
-        bottom: -16px;
-        left: -16px;
+        position: absolute !important;
+        bottom: -22px !important;
+        left: -12px !important;
+        width: 66px !important;
+        height: 66px !important;
+        overflow: hidden !important;
+        z-index: 20;
       }
-      /* "ENGINEER" — big, below terminal */
+      .h-hi-btn .h-hand {
+        width: 46px !important;
+        height: 46px !important;
+      }
+      .h-hi-btn .h-text {
+        font-size: 28px !important;
+      }
+
+      /* "ENGINEER" — 8 chars, must be smaller so it doesn't overflow */
       .h-right {
-        position: absolute;
-        top: 52%; left: 3%;
-        font-size: clamp(80px, 24vw, 130px) !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
         transform: none !important;
-        line-height: 0.85;
-        z-index: 2;
+        width: 100%;
+        line-height: 0.8;
+        z-index: 1;
+        text-align: center;
+        font-size: clamp(52px, 13.5vw, 96px) !important;
+        margin-top: 12px;
+        white-space: nowrap;
       }
-      /* Tagline + tags */
+
+      /* Tagline & tags — natural flow below */
       .h-br {
-        position: absolute;
-        top: 74%; left: 5%;
-        right: 5%;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
         transform: none !important;
-        margin: 0;
-        text-align: left;
+        margin-top: 32px !important;
+        max-width: 440px;
+        text-align: center;
       }
-      .h-br-main { font-size: 14px; line-height: 1.5; }
-      .h-br-tags { justify-content: flex-start; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-      .h-br-tag { padding: 5px 10px; font-size: 10px; }
+      .h-br-main { font-size: 15px; line-height: 1.7; }
+      .h-br-tags { justify-content: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+      .h-br-tag { padding: 6px 14px; font-size: 10px; }
+
       .h-toggle { display: none; }
 
       /* Footer */
-      footer { flex-direction: column; gap: 16px; text-align: center; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 40px 5%; }
 
       /* Contact / section headings */
-      .con-head { font-size: clamp(50px, 10vw, 80px); }
+      .con-head { font-size: clamp(44px, 10vw, 80px); }
       .about-heading { font-size: clamp(40px, 10vw, 80px); }
       .s-head { font-size: clamp(40px, 10vw, 80px); }
       .contact-bar { padding: 32px 5%; overflow: hidden; }
-      .cb-top { grid-template-columns: 1fr; gap: 20px; }
-      .cb-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .cb-top { grid-template-columns: 1fr !important; gap: 20px; }
+      .cb-bottom { flex-direction: column; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
 
       /* Project Cards — compact rectangles */
       .pcard {
@@ -1801,14 +1906,55 @@
     }
 
     @media (max-width: 480px) {
-      .h-name { top: 11%; font-size: 12px; }
-      .h-left { top: 17%; font-size: clamp(70px, 22vw, 110px) !important; }
-      .h-center, body.mode-ai .h-center, body.mode-data .h-center { top: 23%; width: 58%; transform: translateX(-38%) !important; }
-      .h-right { top: 50%; font-size: clamp(70px, 22vw, 110px) !important; }
-      .h-br { top: 73%; }
-      .h-hi-btn { width: 38px !important; height: 38px !important; font-size: 15px !important; bottom: -14px; left: -14px; }
-      nav { top: 10px; width: 96%; padding: 6px 10px; }
-      .nav-links li a { font-size: 12px; padding: 4px 7px; }
+      /* Hero fine-tune for small phones */
+      .h-name { top: 8%; font-size: 10px; }
+      .h-left, .h-right { font-size: clamp(70px, 25vw, 100px) !important; }
+      .h-center, body.mode-ai .h-center, body.mode-data .h-center { width: 95% !important; margin: 15px auto !important; }
+      .term-body { padding: 12px 14px; font-size: 11px; }
+      /* Smaller bubble for 480px — scale contents proportionally */
+      .h-hi-btn { width: 52px !important; height: 52px !important; bottom: -14px !important; left: -8px !important; overflow: hidden !important; }
+      .h-hi-btn .h-hand { width: 36px !important; height: 36px !important; }
+      .h-hi-btn .h-text { font-size: 22px !important; }
+      .h-br { margin-top: 20px !important; }
+      .h-br-main { font-size: 13px; }
+      
+      nav { top: 10px; width: 94%; padding: 6px 10px; }
+      .nav-links li a { font-size: 11px; padding: 4px 6px; }
+
+      /* ── 1. Typography — smaller phones ── */
+      body { overflow-x: hidden; }
+      #specialize, #about, #stack { padding: 60px 4%; }
+      #contact { padding: 48px 4% !important; }
+      #projects { padding: 24px 4% 0; }
+      .con-head { font-size: clamp(38px, 12vw, 60px); line-height: 0.9; }
+      .about-heading { font-size: clamp(36px, 11vw, 60px); }
+      .s-head { font-size: clamp(34px, 10vw, 56px); }
+
+      /* ── 2. Bento grid on smallest screens ── */
+      #aiStk { grid-template-columns: 1fr !important; gap: 20px; }
+      .bento-card.full-width { grid-column: 1 !important; }
+      .lang-inner { grid-template-columns: 1fr !important; }
+      .bento-card { padding: 22px 20px 18px; }
+
+      /* ── 3. Contact form row collapse ── */
+      .field-row { grid-template-columns: 1fr !important; gap: 12px; }
+      .contact-form { padding: 24px 20px; gap: 14px; }
+      .submit-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .submit-hint { display: none; }
+
+      /* ── 4. Accent bar bottom row ── */
+      .cb-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .cb-top { gap: 16px; }
+      .cb-value { font-size: 14px; word-break: break-all; }
+
+      /* Clean footer on small screen */
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 4%; }
+      .fl { font-size: 22px; }
     }
   </style>
 </head>
