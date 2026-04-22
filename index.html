@@ -1618,6 +1618,23 @@
     .rv.d1 { transition-delay: .1s }
     .rv.d2 { transition-delay: .2s }
 
+    /* ACHIEVEMENTS SECTION */
+    #achievements { padding: 120px 7%; border-top: 1px solid var(--border); }
+    .ach-card { background: #121212; border-radius: 24px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; margin-top: 40px; position: relative; transition: transform .4s var(--spring), box-shadow .4s var(--spring), border-color .4s; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .ach-card:hover { transform: translateY(-6px); border-color: rgba(203,255,94,0.15); box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
+    .ach-img-box { width: 100%; position: relative; line-height: 0; }
+    .ach-img { width: 100%; height: auto; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .ach-badge { position: absolute; top: 24px; right: 24px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(0,0,0,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(203,255,94,0.2); border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); z-index: 2; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    .ach-bdot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(203,255,94,0.8); animation: pulse 2s ease-in-out infinite; }
+    .ach-content { padding: 48px; position: relative; z-index: 2; }
+    .ach-tag { display: inline-block; padding: 6px 16px; background: rgba(203, 255, 94, .04); border: 1px solid rgba(203, 255, 94, .15); border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+    .ach-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(32px, 5vw, 52px); text-transform: uppercase; letter-spacing: -.01em; line-height: 1.1; margin-bottom: 20px; color: #fff; }
+    .ach-desc { font-size: 16px; color: rgba(255, 255, 255, 0.85); line-height: 1.7; max-width: 800px; margin-bottom: 40px; }
+    .ach-stats { display: flex; gap: 56px; flex-wrap: wrap; }
+    .ach-stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .ach-stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 48px; color: var(--accent); line-height: 1; }
+    .ach-stat-label { font-size: 14px; color: var(--dim); font-weight: 500; }
+
     /* CONTACT SECTION */
     #contact { padding: 120px 7% 80px; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .avail-badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 1px solid rgba(203,255,94,0.22); border-radius: 100px; background: rgba(203,255,94,0.05); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent); margin-bottom: 26px; width: fit-content; }
@@ -1674,11 +1691,13 @@
       /* ── 1. GLOBAL: Prevent horizontal scroll, tighten padding ── */
       body { overflow-x: hidden; }
 
-      #specialize, #about {
+      #specialize, #about, #achievements {
         grid-template-columns: 1fr !important;
         gap: 48px;
         padding: 80px 5%;
       }
+      .ach-content { padding: 32px 24px; }
+      .ach-stats { gap: 32px; }
 
       /* ── 2. TOOLKIT BENTO GRID: Stack to 1 column ── */
       #aiStk {
@@ -1735,7 +1754,7 @@
     /* ========================================================= */
     @media (max-width: 900px) {
       /* Grid Layouts to 1 column */
-      #specialize, #about, #contact { 
+      #specialize, #about, #contact, #achievements { 
         grid-template-columns: 1fr !important; 
         gap: 50px; 
         padding: 80px 5%; 
@@ -1923,8 +1942,12 @@
 
       /* ── 1. Typography — smaller phones ── */
       body { overflow-x: hidden; }
-      #specialize, #about, #stack { padding: 60px 4%; }
+      #specialize, #about, #stack, #achievements { padding: 60px 4%; }
       #contact { padding: 48px 4% !important; }
+      .ach-badge { top: 16px; right: 16px; font-size: 9px; padding: 6px 12px; }
+      .ach-content { padding: 24px 20px; }
+      .ach-tag { font-size: 9px; padding: 5px 12px; margin-bottom: 16px; }
+      .ach-stats { gap: 24px; flex-direction: column; }
       #projects { padding: 24px 4% 0; }
       .con-head { font-size: clamp(38px, 12vw, 60px); line-height: 0.9; }
       .about-heading { font-size: clamp(36px, 11vw, 60px); }
@@ -2266,6 +2289,42 @@
         </div>
       </div>
       <div class="proj-spacer"></div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="rv">
+      <p class="s-tag">// Milestones</p>
+      <h2 class="s-head">ACHIEVEMENTS</h2>
+      
+      <div class="ach-card">
+        <div class="ach-img-box">
+          <img src="hackfest.jpeg" alt="Hackfest Podium Finish" class="ach-img">
+          <div class="ach-badge"><span class="ach-bdot"></span>PODIUM FINISH</div>
+        </div>
+        <div class="ach-content">
+          <div class="ach-tag">HACKFEST • NMAM INSTITUTE OF TECHNOLOGY, NITTE</div>
+          <h3 class="ach-title">2ND RUNNER UP — HACKFEST</h3>
+          <p class="ach-desc">
+            Competed against the sharpest builders in the region — our team was shortlisted into the <strong style="color:var(--text)">top 50 finalists from 750+ applicant teams</strong> across colleges. In that high-pressure final arena, we secured a <strong style="color:var(--accent)">podium finish (3rd place)</strong>, demonstrating rapid system design, AI integration under time constraints, and real-world execution.
+          </p>
+          <div class="ach-stats">
+            <div class="ach-stat-item">
+              <span class="ach-stat-num">750+</span>
+              <span class="ach-stat-label">Applicant Teams</span>
+            </div>
+            <div class="ach-stat-item">
+              <span class="ach-stat-num">50</span>
+              <span class="ach-stat-label">Finalists Selected</span>
+            </div>
+            <div class="ach-stat-item">
+              <span class="ach-stat-num">#3</span>
+              <span class="ach-stat-label">Final Ranking</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
