@@ -1838,15 +1838,15 @@
         padding: 0 !important;
       }
 
-      /* Name badge — centered at the top */
+      /* Name badge — top-left, matching desktop (top: 15%, left: 10%) */
       .h-name {
         position: absolute !important;
-        top: 10% !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        font-size: 11px !important;
+        top: 15% !important;
+        left: 5% !important;
+        transform: none !important;
+        font-size: 10px !important;
         letter-spacing: 4px !important;
-        text-align: center !important;
+        text-align: left !important;
         opacity: 0.8 !important;
         width: auto !important;
         margin-bottom: 0 !important;
@@ -1854,47 +1854,47 @@
         display: block !important;
       }
 
-      /* "AI" — massive absolute background */
+      /* "AI" — fits screen, gap closed by positioning */
       .h-left {
         position: absolute !important;
-        left: 6% !important;
-        top: 24% !important;
+        left: 3% !important;
+        top: 30% !important;
         transform: none !important;
         width: auto !important;
-        line-height: 0.75 !important;
+        line-height: 0.8 !important;
         z-index: 1 !important;
         text-align: left !important;
-        font-size: clamp(90px, 24vw, 150px) !important;
+        font-size: clamp(80px, 23vw, 150px) !important;
         margin-bottom: 0 !important;
         white-space: nowrap !important;
         display: block !important;
       }
 
-      /* "ENGINEER" — massive absolute background */
+      /* "ENGINEER" — tight 12% gap from AI */
       .h-right {
         position: absolute !important;
-        left: 8% !important;
-        top: 48% !important;
+        left: 3% !important;
+        top: 42% !important;
         transform: none !important;
         width: auto !important;
-        line-height: 0.75 !important;
+        line-height: 0.8 !important;
         z-index: 1 !important;
         text-align: left !important;
-        font-size: clamp(90px, 24vw, 150px) !important;
+        font-size: clamp(80px, 23vw, 150px) !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
         white-space: nowrap !important;
         display: block !important;
       }
 
-      /* Terminal — floating absolutely in the center, overlapping the background text */
+      /* Terminal — compact card at junction */
       .h-center, body.mode-ai .h-center, body.mode-data .h-center {
         position: absolute !important;
-        top: 44% !important;
-        left: 50% !important;
+        top: 38% !important;
+        left: 40% !important;
         transform: translate(-50%, -50%) !important;
-        width: 90% !important;
-        max-width: 330px !important;
+        width: 52% !important;
+        max-width: 200px !important;
         margin: 0 !important;
         z-index: 10 !important;
         display: flex !important;
@@ -1904,19 +1904,35 @@
 
       .term-card {
         width: 100% !important;
-        border-radius: 14px !important;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.85) !important;
+        border-radius: 10px !important;
+        box-shadow: 0 16px 40px rgba(0,0,0,0.85) !important;
       }
-      .term-bar { padding: 10px 14px; }
-      .term-body { padding: 14px 16px; font-size: 11.5px; line-height: 1.9; }
+      .term-bar {
+        padding: 6px 10px !important;
+      }
+      .td {
+        width: 8px !important;
+        height: 8px !important;
+      }
+      .t-ti {
+        font-size: 8px !important;
+      }
+      .term-body {
+        padding: 8px 12px !important;
+        font-size: 9.5px !important;
+        line-height: 1.6 !important;
+      }
+      .term-body .tl {
+        gap: 6px !important;
+      }
 
       /* Hi Bubble — anchored to bottom-left of terminal card */
       .h-hi-btn {
         position: absolute !important;
-        bottom: -20px !important;
-        left: -12px !important;
-        width: 66px !important;
-        height: 66px !important;
+        bottom: -12px !important;
+        left: -8px !important;
+        width: 42px !important;
+        height: 42px !important;
         overflow: hidden !important;
         z-index: 20 !important;
         display: flex !important;
@@ -1924,17 +1940,17 @@
         justify-content: center !important;
       }
       .h-hi-btn .h-hand {
-        width: 44px !important;
-        height: 44px !important;
+        width: 28px !important;
+        height: 28px !important;
       }
       .h-hi-btn .h-text {
-        font-size: 26px !important;
+        font-size: 16px !important;
       }
 
       /* Tagline & tags — anchored centered at the bottom of the viewport */
       .h-br {
         position: absolute !important;
-        bottom: 4% !important;
+        bottom: 14% !important;
         top: auto !important;
         left: 50% !important;
         right: auto !important;
@@ -2030,37 +2046,38 @@
         top: 8% !important;
       }
       .h-left {
-        left: 6% !important;
-        top: 22% !important;
-        font-size: clamp(70px, 22vw, 110px) !important;
+        left: 3% !important;
+        top: 30% !important;
+        font-size: clamp(70px, 21vw, 95px) !important;
       }
       .h-right {
-        left: 8% !important;
-        top: 46% !important;
-        font-size: clamp(70px, 22vw, 110px) !important;
+        left: 3% !important;
+        top: 42% !important;
+        font-size: clamp(70px, 21vw, 95px) !important;
       }
       .h-center, body.mode-ai .h-center, body.mode-data .h-center {
-        top: 42% !important;
-        width: 92% !important;
-        max-width: 300px !important;
+        top: 38% !important;
+        left: 40% !important;
+        width: 50% !important;
+        max-width: 175px !important;
       }
       .term-body {
-        padding: 12px 14px !important;
-        font-size: 10.5px !important;
-        line-height: 1.8 !important;
+        padding: 7px 9px !important;
+        font-size: 8.5px !important;
+        line-height: 1.55 !important;
       }
       .h-hi-btn {
-        width: 52px !important;
-        height: 52px !important;
-        bottom: -14px !important;
-        left: -8px !important;
+        width: 38px !important;
+        height: 38px !important;
+        bottom: -10px !important;
+        left: -6px !important;
       }
       .h-hi-btn .h-hand {
-        width: 34px !important;
-        height: 34px !important;
+        width: 28px !important;
+        height: 28px !important;
       }
       .h-hi-btn .h-text {
-        font-size: 20px !important;
+        font-size: 16px !important;
       }
       .h-br {
         bottom: 3% !important;
