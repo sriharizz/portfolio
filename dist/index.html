@@ -194,23 +194,25 @@
     }
 
     /* Collapsed nav state when scrolled / morphs into status */
-    @media (min-width: 901px) {
-      nav.is-scrolling .nav-links,
-      nav.is-scrolling .nav-cta {
-        width: 0 !important;
-        opacity: 0 !important;
-        overflow: hidden !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        pointer-events: none;
-        transition: width .35s, opacity .35s, padding .35s;
-      }
+    nav.is-scrolling .nav-links,
+    nav.is-scrolling .nav-cta {
+      width: 0 !important;
+      opacity: 0 !important;
+      overflow: hidden !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      pointer-events: none;
+      transition: width .35s, opacity .35s, padding .35s;
+    }
 
-      nav.is-scrolling .nav-status {
-        display: flex !important;
-        opacity: 1;
-        transform: translateY(0);
-      }
+    nav.is-scrolling .nav-status {
+      display: flex !important;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .status-mobile {
+      display: none;
     }
 
     .nav-links a {
@@ -1722,7 +1724,7 @@
       /* Sticky deck project spacer active on mobile for overlapping scrolls */
       .proj-spacer {
         display: block !important;
-        height: 200px !important;
+        height: 40px !important;
       }
 
       /* ── 2. TOOLKIT BENTO GRID: Stack to 1 column ── */
@@ -1803,7 +1805,17 @@
       .nav-links li { display: inline-flex; }
       .nav-links li a { font-size: 11.5px; padding: 5px 8px; }
       .nav-av { width: 32px; height: 32px; font-size: 12px; line-height: 32px; border-radius: 10px; flex-shrink: 0; margin-right: 4px; }
-      .nav-status { display: none !important; }
+      .nav-status {
+        display: none;
+        align-items: center !important;
+        gap: 6px !important;
+        font-size: 11.5px !important;
+        color: #fff !important;
+        padding: 5px 8px !important;
+        white-space: nowrap !important;
+      }
+      .status-desktop { display: none !important; }
+      .status-mobile { display: inline-block !important; }
       .nav-cta {
         display: inline-flex !important;
         align-items: center !important;
@@ -1846,13 +1858,13 @@
       .h-left {
         position: absolute !important;
         left: 6% !important;
-        top: 16% !important;
+        top: 24% !important;
         transform: none !important;
         width: auto !important;
         line-height: 0.75 !important;
         z-index: 1 !important;
         text-align: left !important;
-        font-size: clamp(100px, 25vw, 170px) !important;
+        font-size: clamp(90px, 24vw, 150px) !important;
         margin-bottom: 0 !important;
         white-space: nowrap !important;
         display: block !important;
@@ -1862,13 +1874,13 @@
       .h-right {
         position: absolute !important;
         left: 8% !important;
-        top: 27% !important;
+        top: 48% !important;
         transform: none !important;
         width: auto !important;
         line-height: 0.75 !important;
         z-index: 1 !important;
         text-align: left !important;
-        font-size: clamp(100px, 25vw, 170px) !important;
+        font-size: clamp(90px, 24vw, 150px) !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
         white-space: nowrap !important;
@@ -1878,11 +1890,11 @@
       /* Terminal — floating absolutely in the center, overlapping the background text */
       .h-center, body.mode-ai .h-center, body.mode-data .h-center {
         position: absolute !important;
-        top: 52% !important;
+        top: 44% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
         width: 90% !important;
-        max-width: 340px !important;
+        max-width: 330px !important;
         margin: 0 !important;
         z-index: 10 !important;
         display: flex !important;
@@ -2019,16 +2031,16 @@
       }
       .h-left {
         left: 6% !important;
-        top: 14% !important;
+        top: 22% !important;
         font-size: clamp(70px, 22vw, 110px) !important;
       }
       .h-right {
         left: 8% !important;
-        top: 24% !important;
+        top: 46% !important;
         font-size: clamp(70px, 22vw, 110px) !important;
       }
       .h-center, body.mode-ai .h-center, body.mode-data .h-center {
-        top: 50% !important;
+        top: 42% !important;
         width: 92% !important;
         max-width: 300px !important;
       }
@@ -2163,7 +2175,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-    <div class="nav-status" style="display: none; align-items: center; gap: 8px; color:#fff; font-weight:500;"><div class="status-dot"></div>Associate Consultant Intern (AI Engineer) @ Chiacon</div>
+    <div class="nav-status" style="display: none; align-items: center; gap: 8px; color:#fff; font-weight:500;"><div class="status-dot"></div><span class="status-desktop">Associate Consultant Intern (AI Engineer) @ Chiacon</span><span class="status-mobile">AI Engineer Intern @ Chiacon</span></div>
     <a href="#contact" class="nav-cta">Contact</a>
   </nav>
 
