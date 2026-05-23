@@ -194,21 +194,23 @@
     }
 
     /* Collapsed nav state when scrolled / morphs into status */
-    nav.is-scrolling .nav-links,
-    nav.is-scrolling .nav-cta {
-      width: 0 !important;
-      opacity: 0 !important;
-      overflow: hidden !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      pointer-events: none;
-      transition: width .35s, opacity .35s, padding .35s;
-    }
+    @media (min-width: 901px) {
+      nav.is-scrolling .nav-links,
+      nav.is-scrolling .nav-cta {
+        width: 0 !important;
+        opacity: 0 !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        pointer-events: none;
+        transition: width .35s, opacity .35s, padding .35s;
+      }
 
-    nav.is-scrolling .nav-status {
-      display: flex !important;
-      opacity: 1;
-      transform: translateY(0);
+      nav.is-scrolling .nav-status {
+        display: flex !important;
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .nav-links a {
@@ -1696,8 +1698,32 @@
         gap: 48px;
         padding: 80px 5%;
       }
+      #projects {
+        padding: 80px 5% 0 !important;
+        scroll-margin-top: 90px !important;
+      }
       .ach-content { padding: 32px 24px; }
       .ach-stats { gap: 32px; }
+
+      /* Reset rotated card to flat layout on mobile to prevent horizontal overflow */
+      .spec-card {
+        transform: none !important;
+      }
+      .spec-card:hover {
+        transform: scale(1.02) !important;
+      }
+      
+      /* Stack about info grid to prevent email clipping */
+      .about-info {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      /* Sticky deck project spacer active on mobile for overlapping scrolls */
+      .proj-spacer {
+        display: block !important;
+        height: 200px !important;
+      }
 
       /* ── 2. TOOLKIT BENTO GRID: Stack to 1 column ── */
       #aiStk {
@@ -1767,81 +1793,107 @@
         top: 16px; 
         left: 50%; right: auto; 
         transform: translateX(-50%); 
-        width: 92%;
+        width: 94%;
         max-width: 480px;
-        padding: 8px 14px; 
+        padding: 6px 10px; 
         border-radius: 20px; 
         justify-content: space-between;
       }
-      .nav-links { gap: 8px; flex-wrap: nowrap; }
+      .nav-links { gap: 4px; flex-wrap: nowrap; padding: 0 4px; }
       .nav-links li { display: inline-flex; }
-      .nav-links li a { font-size: 13px; padding: 6px 10px; }
-      .nav-av { width: 34px; height: 34px; font-size: 12px; line-height: 34px; border-radius: 10px; flex-shrink: 0; }
+      .nav-links li a { font-size: 11.5px; padding: 5px 8px; }
+      .nav-av { width: 32px; height: 32px; font-size: 12px; line-height: 32px; border-radius: 10px; flex-shrink: 0; margin-right: 4px; }
       .nav-status { display: none !important; }
-      .nav-cta { display: none; }
+      .nav-cta {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        border-radius: 100px !important;
+        margin-left: 4px !important;
+        white-space: nowrap !important;
+      }
 
-      /* ── HERO MOBILE — CLEAN PROFESSIONAL STACK ── */
+      /* ── HERO MOBILE — EXACT LAPTOP COPY (RESPONSIVE ABSOLUTE LAYERING) ── */
       #hero {
-        height: auto;
-        min-height: 100svh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 100px 6% 60px; /* top clears the fixed nav */
-        text-align: center;
-        overflow-x: hidden;
+        height: 100svh !important;
+        min-height: 640px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        display: block !important;
+        padding: 0 !important;
       }
 
-      /* Name badge — top, centered */
+      /* Name badge — centered at the top */
       .h-name {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        font-size: 10px;
-        letter-spacing: 4px;
-        opacity: 0.55;
-        margin-bottom: 28px;
-        width: 100%;
-        text-align: center;
-        white-space: nowrap;
+        position: absolute !important;
+        top: 10% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        font-size: 11px !important;
+        letter-spacing: 4px !important;
+        text-align: center !important;
+        opacity: 0.8 !important;
+        width: auto !important;
+        margin-bottom: 0 !important;
+        z-index: 20 !important;
+        display: block !important;
       }
 
-      /* "AI" — can be big, only 2 chars */
+      /* "AI" — massive absolute background */
       .h-left {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
+        position: absolute !important;
+        left: 6% !important;
+        top: 16% !important;
         transform: none !important;
-        width: 100%;
-        line-height: 0.8;
-        z-index: 1;
-        text-align: center;
-        font-size: clamp(100px, 28vw, 180px) !important;
-        margin-bottom: 8px;
-        white-space: nowrap;
+        width: auto !important;
+        line-height: 0.75 !important;
+        z-index: 1 !important;
+        text-align: left !important;
+        font-size: clamp(100px, 25vw, 170px) !important;
+        margin-bottom: 0 !important;
+        white-space: nowrap !important;
+        display: block !important;
       }
 
-      /* Terminal — centered block */
-      .h-center, body.mode-ai .h-center, body.mode-data .h-center {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
+      /* "ENGINEER" — massive absolute background */
+      .h-right {
+        position: absolute !important;
+        left: 8% !important;
+        top: 27% !important;
         transform: none !important;
-        width: 88% !important;
-        max-width: 320px;
-        margin: 0 auto 8px !important;
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        width: auto !important;
+        line-height: 0.75 !important;
+        z-index: 1 !important;
+        text-align: left !important;
+        font-size: clamp(100px, 25vw, 170px) !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        white-space: nowrap !important;
+        display: block !important;
+      }
+
+      /* Terminal — floating absolutely in the center, overlapping the background text */
+      .h-center, body.mode-ai .h-center, body.mode-data .h-center {
+        position: absolute !important;
+        top: 52% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90% !important;
+        max-width: 340px !important;
+        margin: 0 !important;
+        z-index: 10 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
       }
 
       .term-card {
-        width: 100%;
-        border-radius: 14px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+        width: 100% !important;
+        border-radius: 14px !important;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.85) !important;
       }
       .term-bar { padding: 10px 14px; }
       .term-body { padding: 14px 16px; font-size: 11.5px; line-height: 1.9; }
@@ -1849,51 +1901,45 @@
       /* Hi Bubble — anchored to bottom-left of terminal card */
       .h-hi-btn {
         position: absolute !important;
-        bottom: -22px !important;
+        bottom: -20px !important;
         left: -12px !important;
         width: 66px !important;
         height: 66px !important;
         overflow: hidden !important;
-        z-index: 20;
+        z-index: 20 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
       .h-hi-btn .h-hand {
-        width: 46px !important;
-        height: 46px !important;
+        width: 44px !important;
+        height: 44px !important;
       }
       .h-hi-btn .h-text {
-        font-size: 28px !important;
+        font-size: 26px !important;
       }
 
-      /* "ENGINEER" — 8 chars, must be smaller so it doesn't overflow */
-      .h-right {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        width: 100%;
-        line-height: 0.8;
-        z-index: 1;
-        text-align: center;
-        font-size: clamp(52px, 13.5vw, 96px) !important;
-        margin-top: 12px;
-        white-space: nowrap;
-      }
-
-      /* Tagline & tags — natural flow below */
+      /* Tagline & tags — anchored centered at the bottom of the viewport */
       .h-br {
-        position: relative !important;
+        position: absolute !important;
+        bottom: 4% !important;
         top: auto !important;
-        left: auto !important;
+        left: 50% !important;
         right: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-        margin-top: 32px !important;
-        max-width: 440px;
-        text-align: center;
+        transform: translateX(-50%) !important;
+        width: 92% !important;
+        max-width: 440px !important;
+        text-align: center !important;
+        margin: 0 !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
       }
-      .h-br-main { font-size: 15px; line-height: 1.7; }
-      .h-br-tags { justify-content: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
-      .h-br-tag { padding: 6px 14px; font-size: 10px; }
+      .h-br-main { font-size: 13.5px !important; line-height: 1.65 !important; text-align: center !important; }
+      .h-br-tags { justify-content: center !important; gap: 6px !important; margin: 4px 0 0 0 !important; display: flex !important; flex-wrap: wrap !important; }
+      .h-br-tag { padding: 5px 12px !important; font-size: 9.5px !important; }
 
       .h-toggle { display: none; }
 
@@ -1908,37 +1954,133 @@
       .cb-top { grid-template-columns: 1fr !important; gap: 20px; }
       .cb-bottom { flex-direction: column; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
 
-      /* Project Cards — compact rectangles */
-      .pcard {
-        height: auto;
-        min-height: auto;
-        position: relative;
-        top: 0 !important;
-        margin-bottom: 20px;
-        border-radius: 18px;
+      /* Tightened projects container spacing to eliminate the wide gap */
+      #projects {
+        padding: 48px 5% 0 !important;
+        scroll-margin-top: 80px !important;
       }
-      .pcard-content { padding: 24px 18px; }
-      .ptitle { font-size: clamp(28px, 7vw, 44px); margin-bottom: 8px; line-height: 1.1; }
-      .pdesc { font-size: 13px; line-height: 1.55; }
+
+      /* Project Cards — laptop overlapping sticky card animation restored on mobile */
+      .pcard {
+        position: sticky !important;
+        width: 100%;
+        border-radius: 18px !important;
+        overflow: hidden;
+        height: 420px !important; /* Balanced height for thumb scroll stack */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important; /* Centered content vertically to eliminate huge top gap */
+        align-items: center !important;
+        box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.7);
+        transition: filter .4s ease, transform .4s ease;
+        margin-bottom: 24px !important;
+      }
+      .pcard:nth-child(1) { top: 70px !important; z-index: 10; }
+      .pcard:nth-child(2) { top: 90px !important; z-index: 20; }
+      .pcard:nth-child(3) { top: 110px !important; z-index: 30; }
+
+      .pcard-content {
+        padding: 24px 20px !important;
+        text-align: center !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+      }
+      .ptitle { font-size: clamp(24px, 6vw, 32px) !important; margin-bottom: 8px; line-height: 1.1; }
+      .pdesc { font-size: 13px; line-height: 1.5; margin-bottom: 0 !important; }
       .ptag { padding: 5px 12px; font-size: 10px; margin-bottom: 10px; }
-      .parrow { top: 16px; right: 16px; font-size: 18px; }
+      .parrow {
+        top: 16px !important;
+        right: 16px !important;
+        left: auto !important;
+        transform: none !important;
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 15px !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 2 !important; /* Localize stacking context */
+      }
     }
 
     @media (max-width: 480px) {
       /* Hero fine-tune for small phones */
-      .h-name { top: 8%; font-size: 10px; }
-      .h-left, .h-right { font-size: clamp(70px, 25vw, 100px) !important; }
-      .h-center, body.mode-ai .h-center, body.mode-data .h-center { width: 95% !important; margin: 15px auto !important; }
-      .term-body { padding: 12px 14px; font-size: 11px; }
-      /* Smaller bubble for 480px — scale contents proportionally */
-      .h-hi-btn { width: 52px !important; height: 52px !important; bottom: -14px !important; left: -8px !important; overflow: hidden !important; }
-      .h-hi-btn .h-hand { width: 36px !important; height: 36px !important; }
-      .h-hi-btn .h-text { font-size: 22px !important; }
-      .h-br { margin-top: 20px !important; }
-      .h-br-main { font-size: 13px; }
+      #hero {
+        min-height: 568px !important;
+      }
+      .h-name {
+        top: 8% !important;
+      }
+      .h-left {
+        left: 6% !important;
+        top: 14% !important;
+        font-size: clamp(70px, 22vw, 110px) !important;
+      }
+      .h-right {
+        left: 8% !important;
+        top: 24% !important;
+        font-size: clamp(70px, 22vw, 110px) !important;
+      }
+      .h-center, body.mode-ai .h-center, body.mode-data .h-center {
+        top: 50% !important;
+        width: 92% !important;
+        max-width: 300px !important;
+      }
+      .term-body {
+        padding: 12px 14px !important;
+        font-size: 10.5px !important;
+        line-height: 1.8 !important;
+      }
+      .h-hi-btn {
+        width: 52px !important;
+        height: 52px !important;
+        bottom: -14px !important;
+        left: -8px !important;
+      }
+      .h-hi-btn .h-hand {
+        width: 34px !important;
+        height: 34px !important;
+      }
+      .h-hi-btn .h-text {
+        font-size: 20px !important;
+      }
+      .h-br {
+        bottom: 3% !important;
+        top: auto !important;
+        right: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        gap: 8px !important;
+      }
+      .h-br-main {
+        font-size: 12.5px !important;
+      }
+      .h-br-tags {
+        gap: 5px !important;
+      }
+      .h-br-tag {
+        padding: 4px 10px !important;
+        font-size: 9px !important;
+      }
       
       nav { top: 10px; width: 94%; padding: 6px 10px; }
       .nav-links li a { font-size: 11px; padding: 4px 6px; }
+      .nav-cta {
+        padding: 5px 10px !important;
+        font-size: 10px !important;
+        border-radius: 100px !important;
+      }
+      
+      /* Make sticky scroll cards slightly shorter on tiny viewports */
+      .pcard {
+        height: 380px !important;
+      }
 
       /* ── 1. Typography — smaller phones ── */
       body { overflow-x: hidden; }
@@ -1952,6 +2094,29 @@
       .con-head { font-size: clamp(38px, 12vw, 60px); line-height: 0.9; }
       .about-heading { font-size: clamp(36px, 11vw, 60px); }
       .s-head { font-size: clamp(34px, 10vw, 56px); }
+
+      /* Increase readable space inside specialty card */
+      .spec-ci {
+        padding: 24px 20px !important;
+        gap: 20px !important;
+      }
+      .spec-stats {
+        gap: 20px !important;
+      }
+
+      /* Scale down accordion text beautifully on tiny viewports */
+      .acc-title {
+        font-size: 22px !important;
+      }
+      .acc-num {
+        font-size: 18px !important;
+        margin-right: 12px !important;
+        min-width: 24px !important;
+      }
+      .acc-body-in {
+        padding-left: 36px !important;
+        font-size: 14px !important;
+      }
 
       /* ── 2. Bento grid on smallest screens ── */
       #aiStk { grid-template-columns: 1fr !important; gap: 20px; }
